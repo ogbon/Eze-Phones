@@ -2,12 +2,18 @@ import bodyParser from 'body-parser'
 import cors from 'cors'
 import express from 'express'
 import mongoose from './database/database'
+import scriptTriggerRoute from './routes/script_trigger'
+import requestTypeRoute from './routes/request_type'
 
 const app = express()
 
 // Express application configuration
 app.use(bodyParser.json({limit: '5mb'}))
 app.use(cors())
+
+// load routes here
+app.use('/api', scriptTriggerRoute)
+app.use('/api', requestTypeRoute)
 
 // Setup catch-all API catch-all route
 app.get('*', (req, res) => res.status(200).send({
