@@ -12,7 +12,6 @@ const app = express()
 app.use(bodyParser.json({limit: '5mb'}))
 app.use(cors())
 
-// load routes here
 app.use('/api', docsRouter)
 app.use('/api', scriptTriggerRoute)
 app.use('/api', requestTypeRoute)
