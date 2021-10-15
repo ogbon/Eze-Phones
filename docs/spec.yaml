@@ -1,0 +1,121 @@
+openapi: 3.0.0
+info:
+  version: 1.0.0
+  title: Eze Phones API
+  description: Documentation for the Eze Phones API
+
+tags:
+  - name: RequestType
+    description: RequestType
+  - name: ScriptTrigger
+    description: ScriptTrigger 
+
+paths:
+  /api/{requestType}:
+    get:
+      tags:
+        - RequestType
+      summary: Fetch RequestType
+      parameters:
+        - name: requestType
+          in: path
+          description: Type of request
+          schema:
+            $ref: '#/components/schemas/String'
+        - name: page
+          in: query
+          description: 'Current page number'
+        - name: condition
+          in: query
+          description: 'Condition of the phone'
+        - name: price
+          in: query
+          description: 'Price of the phone' 
+        - name: storageSize
+          in: query
+          description: 'Storage size of the phone'
+        - name: phone
+          in: query
+          description: 'Phone type'     
+      responses:
+        "200":
+          $ref: '#/components/responses/RequestTypeFetch'
+
+  /api/trigger-script:
+    get:
+      tags:
+        - ScriptTrigger
+      summary: Get ScriptTrigger
+      responses:
+        "200":
+          $ref: '#/components/responses/ScriptTrigger'        
+          
+components:
+  responses:
+    RequestTypeFetch:
+      description: Fetch RequestType response
+      content:
+        "application/json":
+          schema:
+            $ref: '#/components/schemas/RequestTypeFetchResponse' 
+    ScriptTrigger:
+      description: Get ScriptTrigger response
+      content:
+        "application/json":
+          schema:
+            $ref: '#/components/schemas/ScriptTriggerDetailResponse'              
+  schemas:
+    Number:
+      type: number
+      example: 1
+    String:
+      type: string
+    DefaultModelAttributes:
+      properties:
+        _id:
+          $ref: "#/components/schemas/String"
+          
+    ScriptTriggerDetail:
+      allOf:
+        - $ref: '#/components/schemas/DefaultModelAttributes'
+        - properties:
+            sellRequestCount:
+              $ref: '#/components/schemas/Number'
+            buyRequestCount:
+              $ref: '#/components/schemas/Number'
+              
+    ScriptTriggerDetailResponse:
+      properties:
+        data:
+          $ref: '#/components/schemas/ScriptTriggerDetail'
+        message:
+          $ref: '#/components/schemas/String'   
+              
+    RequestTypeDetail:
+      allOf:
+        - $ref: '#/components/schemas/DefaultModelAttributes'
+        - properties:
+            storageSize:
+              $ref: '#/components/schemas/Number'
+            phone:
+              $ref: '#/components/schemas/String'
+            condition:
+              $ref: '#/components/schemas/String'
+            price:
+              $ref: '#/components/schemas/Number'
+            lockStatus:
+              $ref: '#/components/schemas/String'
+          
+    RequestTypeFetchResponse:
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/RequestTypeDetail'
+        totalItems:
+          $ref: '#/components/schemas/Number'
+        pages:
+          $ref: '#/components/schemas/Number'
+        message:
+          $ref: '#/components/schemas/String'    
+              
