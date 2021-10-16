@@ -10,7 +10,7 @@ Eze Phones API for iPhones Buying and Selling
 - [Installation](#installation)
 - [Testing](#testing)
 - [Principles used in my Design](#principles-used-in-my-design)
-- [Routes](#routes)
+- [Endpoints](#endpoints)
 
 ## Documentation
 The API documentation is available [here](https://eze-phones.herokuapp.com/api/docs/).
@@ -83,9 +83,11 @@ I used regular expression to check for patterns in a string and if there is
 a match I make decision with it.
 
 
-## Routes
-GET     /api/trigger-script   Trigger the script
+## Endpoints
+* `GET     /api/trigger-script`  Trigger the script
 
-GET     /api/:requestType
-           /api/SellRequest   Get SellRequests
-           /api/BuyRequest    Get BuyRequests
+* `GET     /api/:requestType`
+           
+  * `/api/SellRequest`   Get SellRequests
+  
+  * `/api/BuyRequest`   Get BuyRequests
