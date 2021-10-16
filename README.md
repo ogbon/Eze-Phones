@@ -10,6 +10,7 @@ Eze Phones API for iPhones Buying and Selling
 - [Installation](#installation)
 - [Testing](#testing)
 - [Principles used in my Design](#principles-used-in-my-design)
+- [Routes](#routes)
 
 ## Documentation
 The API documentation is available [here](https://eze-phones.herokuapp.com/api/docs/).
@@ -24,8 +25,8 @@ Your system will need to have the following software installed:
 #### Step 1: Clone the repository
 
 ```bash
-git clone https://github.com/ogbon/eze-phones
-cd eze-phone
+git clone https://github.com/ogbon/Eze-Phones
+cd Eze-Phones
 ```
 
 #### Step 2: Setup database
@@ -80,3 +81,11 @@ it aids abstraction the inner function hides the inner working of the codeand ma
 #### Pattern Checking
 I used regular expression to check for patterns in a string and if there is
 a match I make decision with it.
+
+
+## Routes
+GET     /api/trigger-script   Trigger the script
+
+GET     /api/:requestType
+           /api/SellRequest   Get SellRequests
+           /api/BuyRequest    Get BuyRequests
