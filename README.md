@@ -80,7 +80,7 @@ it aids abstraction the inner function hides the inner working of the codeand ma
 
 #### Pattern Checking
 I used regular expression to check for patterns in a string and if there is
-a match I make decision using the pattern.
+a match I make decision with it.
 
 
 ## Endpoints
